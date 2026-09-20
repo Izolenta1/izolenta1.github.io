@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Имя Фамилия — Frontend Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F6F3EE;--paper:#FFFCF7;--ink:#202326;--ink-soft:#2B2E30;--muted:#74736F;--muted-dark:#B7B6B2;--accent:#C96B4B;--sage:#9CAE93;--line:#D8D2C9}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.4 'Manrope',system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+a{color:inherit;text-decoration:none}
+.container{width:min(100% - 32px,680px);margin:auto}
+
+header{height:68px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:14px;position:relative}
+.brand{font-weight:600;font-size:16px;letter-spacing:-.02em;white-space:nowrap}
+.header-cta{margin-left:auto}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;border:none;padding:8px 16px;background:var(--sage);color:var(--paper);line-height:1;font-size:14px;font-weight:500;transition:.2s}
+.btn:hover{background:var(--accent)}
+
+/* burger */
+.nav-toggle{display:none}
+.burger{width:24px;height:16px;position:relative;cursor:pointer;z-index:30}
+.burger span{position:absolute;left:0;right:0;height:2px;background:var(--ink);border-radius:2px;transition:.2s ease}
+.burger span:nth-child(1){top:0}
+.burger span:nth-child(2){top:7px}
+.burger span:nth-child(3){top:14px}
+.nav-toggle:checked ~ .burger span:nth-child(1){top:7px;transform:rotate(45deg)}
+.nav-toggle:checked ~ .burger span:nth-child(2){opacity:0}
+.nav-toggle:checked ~ .burger span:nth-child(3){top:7px;transform:rotate(-45deg)}
+
+.nav{position:absolute;top:68px;left:0;right:0;background:var(--paper);border-radius:0 0 12px 12px;display:flex;flex-direction:column;max-height:0;overflow:hidden;transition:max-height .25s ease;z-index:20}
+.nav-toggle:checked ~ .nav{max-height:420px;border:1px solid var(--line);border-top:none}
+.nav a{color:var(--muted);padding:13px 18px;border-bottom:1px solid var(--line);font-size:14px}
+.nav a:last-child{border-bottom:none}
+
+h1{font-size:48px;line-height:.95;letter-spacing:-.02em;margin:0;font-weight:500}
+h2{font-size:24px;letter-spacing:-.02em;font-weight:500;margin:0 0 18px}
+.role{font-size:20px}
+.intro{color:var(--muted);max-width:560px;margin:0;font-size:16px}
+
+main{display:flex;flex-direction:column;gap:20px;padding:20px 0}
+
+.hero{display:grid;gap:24px}
+.hero-copy{order:2;display:flex;flex-direction:column;gap:24px}
+.portrait-wrap{order:1}
+.role-block{display:flex;flex-direction:column;gap:8px}
+.hero-meta{display:flex;align-items:center;gap:16px}
+.hero-meta>*{flex:1 1 0}
+.hero-meta .btn{width:100%;padding:13px 18px}
+.location-block small{display:block;text-align:right;font-size:12px;text-transform:uppercase;color:var(--muted)}
+
+.portrait{background:transparent;position:relative;overflow:hidden;display:flex;align-items:flex-end;justify-content:center}
+.portrait img{width:100%;height:auto;object-fit:contain;object-position:bottom;display:block;image-rendering:pixelated}
+
+section{padding:0}
+.section-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px}
+.section-head h2{margin-bottom:0}
+.section-head span{color:var(--muted);font-size:12px}
+
+.project-row-outer{overflow-x:auto;transform:scaleY(-1)}
+.project-row-outer::-webkit-scrollbar{height:6px}
+.project-row-outer::-webkit-scrollbar-track{background:transparent}
+.project-row-outer::-webkit-scrollbar-thumb{background:var(--muted);border-radius:3px}
+.project-row{display:flex;gap:12px;transform:scaleY(-1);width:max-content;margin-bottom:12px}
+.project-card{min-width:190px;background:var(--paper);border-radius:12px;border:none;padding:10px}
+.project-card.active{background:var(--ink);color:var(--paper);border-radius:12px 12px 0 0}
+.thumb{aspect-ratio:16/9;border-radius:6px;background:#D7D0C7;margin-bottom:12px;position:relative;overflow:hidden}
+.project-card.active .thumb{background:var(--ink-soft)}
+.project-title{font-size:14px}
+.year{font-size:12px;color:var(--muted)}
+.active .year{color:var(--muted-dark)}
+
+.connector{width:190px;height:18px;background:var(--ink)}
+
+.feature{border-radius:0 16px 16px 16px;background:var(--ink);color:var(--paper);padding:16px;display:flex;flex-direction:column;gap:14px}
+.visual{aspect-ratio:16/9;border-radius:10px;background:var(--ink-soft);position:relative;overflow:hidden}
+.visual span{position:absolute;display:block;border-radius:8px;width:62%;aspect-ratio:16/9;left:50%;top:50%;transform:translate(-50%,-50%)}
+.visual .r{background:#E7E2D8;transform:translate(calc(-50% - 10px),calc(-50% - 10px))}
+.visual .g{background:#F3D9B8}
+.visual .b{background:var(--paper);transform:translate(calc(-50% + 10px),calc(-50% + 10px))}
+.feature h3{font-size:24px;font-weight:500;letter-spacing:-.02em;margin:0}
+.feature .btn{align-self:flex-start}
+.feature p{color:var(--muted-dark);margin:0;font-size:14px;line-height:1.6}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{border-radius:999px;background:var(--paper);color:var(--ink);padding:6px 12px;font-size:12px}
+
+.stack{border-radius:16px;overflow:hidden;background:var(--paper);color:var(--ink);display:grid;grid-template-columns:1fr 1fr}
+.stack-col{padding:20px;border-bottom:1px solid var(--bg)}
+.stack-col:nth-child(odd){border-right:1px solid var(--bg)}
+.stack-col:nth-last-child(-n+2){border-bottom:0}
+.stack h3{font:600 12px/1.2 'Manrope',sans-serif;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:0 0 12px}
+.stack p{margin:0;white-space:pre-line;font:400 12px/1.8 'IBM Plex Mono',ui-monospace,monospace;color:var(--ink)}
+
+.contact-grid{display:grid;gap:24px}
+.contact{padding-bottom:0;display:flex;flex-direction:column;gap:14px}
+.contact-lead{font-size:18px;letter-spacing:-.01em;margin:0}
+.contact-links{display:flex;flex-direction:column;gap:10px}
+.contact-link{display:flex;align-items:center;gap:12px;padding:13px 16px;border-radius:12px;background:var(--paper);font-size:15px}
+.contact-link svg{width:20px;height:20px;flex:none;fill:currentColor}
+.contact-link::after{content:'→';margin-left:auto;opacity:.45}
+.contact-photo{background:transparent;border-radius:20px;overflow:hidden;aspect-ratio:4/3;display:flex;align-items:flex-end;justify-content:center;max-width:320px;margin:0 auto}
+.contact-photo img{width:100%;height:100%;object-fit:contain;object-position:bottom;display:block;image-rendering:pixelated}
+
+footer{border-top:1px solid var(--line);padding:20px 0 28px;color:var(--muted);font-size:12px}
+
+@media (min-width:560px){
+.hero{grid-template-columns:1fr 1fr;align-items:stretch}
+.hero-copy{order:1;justify-content:center}
+.portrait-wrap{order:2;height:100%}
+.portrait{height:100%;max-width:310px;margin-left:auto}
+.portrait img{height:100%}
+h1{font-size:60px}
+.contact-grid{grid-template-columns:1.1fr .9fr;align-items:stretch}
+.contact-photo{max-width:none;margin:0;height:100%;aspect-ratio:auto}
+}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<a class="brand" href="#">username.github.io</a>
+<a class="btn header-cta" href="#">Резюме →</a>
+<input type="checkbox" id="nav-toggle" class="nav-toggle">
+<label for="nav-toggle" class="burger" aria-label="Открыть меню"><span></span><span></span><span></span></label>
+<nav class="nav">
+<a href="#about">обо мне</a>
+<a href="#projects">проекты</a>
+<a href="#tests">доп. опыт</a>
+<a href="#stack">умения</a>
+<a href="#contact">контакты</a>
+</nav>
+</header>
+<main>
+
+<section class="hero" id="about">
+<div class="hero-copy">
+<h1>Имя<br>Фамилия</h1>
+<div class="role-block">
+<div class="role">Фронтенд разработчик</div>
+<p class="intro">Создаю быстрые и выразительные интерфейсы. Люблю аккуратную типографику, понятную архитектуру и детали, которые делают продукт живым.</p>
+</div>
+<div class="hero-meta">
+<a class="btn" href="#contact">Связаться →</a>
+<div class="location-block"><small>Россия / Москва</small></div>
+</div>
+</div>
+<div class="portrait-wrap">
+<div class="portrait"><img src="CatPicture1.png" alt="Портрет"></div>
+</div>
+</section>
+
+<section id="projects">
+<div class="section-head"><h2>Проекты</h2><span>01—04</span></div>
+<div class="project-row-outer"><div class="project-row">
+<div class="project-card active"><div class="thumb"></div><div class="project-title">Проект</div><div class="year">2026</div></div>
+<div class="project-card"><div class="thumb"></div><div class="project-title">Проект</div><div class="year">2026</div></div>
+<div class="project-card"><div class="thumb"></div><div class="project-title">Проект</div><div class="year">2026</div></div>
+<div class="project-card"><div class="thumb"></div><div class="project-title">Проект</div><div class="year">2026</div></div>
+</div></div>
+<div class="connector"></div>
+<article class="feature">
+<div class="visual"><span class="r"></span><span class="g"></span><span class="b"></span></div>
+<h3>Название проекта</h3>
+<a class="btn" href="#">github →</a>
+<p>Веб-приложение с акцентом на производительность, ясную навигацию и выразительную визуальную систему. Здесь можно разместить краткое описание задачи, решения и результата.</p>
+<div class="tags"><span class="tag">React</span><span class="tag">Next.js</span><span class="tag">TypeScript</span><span class="tag">Vite</span><span class="tag">Tailwind CSS</span></div>
+</article>
+</section>
+
+<section id="tests">
+<div class="section-head"><h2>Доп. опыт</h2><span>01—04</span></div>
+<div class="project-row-outer"><div class="project-row">
+<div class="project-card active"><div class="thumb"></div><div class="project-title">Проект</div><div class="year">2026</div></div>
+<div class="project-card"><div class="thumb"></div><div class="project-title">Проект</div><div class="year">2026</div></div>
+<div class="project-card"><div class="thumb"></div><div class="project-title">Проект</div><div class="year">2026</div></div>
+<div class="project-card"><div class="thumb"></div><div class="project-title">Проект</div><div class="year">2026</div></div>
+</div></div>
+<div class="connector"></div>
+<article class="feature">
+<div class="visual"><span class="r"></span><span class="g"></span><span class="b"></span></div>
+<h3>Название проекта</h3>
+<a class="btn" href="#">github →</a>
+<p>Тестовое задание на верстку и логику интерфейса с фокусом на точное соответствие макету, чистую структуру компонентов и аккуратную адаптивность.</p>
+<div class="tags"><span class="tag">React</span><span class="tag">Next.js</span><span class="tag">TypeScript</span><span class="tag">Vite</span><span class="tag">Tailwind CSS</span></div>
+</article>
+</section>
+
+<section id="stack">
+<h2>Умение и стек</h2>
+<div class="stack">
+<div class="stack-col"><h3>Languages</h3><p>TypeScript
+JavaScript
+Rust
+SQL
+Python</p></div>
+<div class="stack-col"><h3>Frontend</h3><p>React
+Next.js
+SvelteKit
+Vite
+Tailwind CSS</p></div>
+<div class="stack-col"><h3>Backend</h3><p>Node.js
+Hono
+PostgreSQL
+Redis
+Supabase</p></div>
+<div class="stack-col"><h3>Tooling</h3><p>Storybook
+Vitest
+Playwright
+GitHub Actions
+Docker</p></div>
+</div>
+</section>
+
+<section id="contact">
+<h2>Контакты</h2>
+<div class="contact-grid">
+<div class="contact">
+<div class="contact-lead">Открыт для работы на полную ставку и проектов по контракту.</div>
+<div class="contact-links">
+<a class="contact-link" href="mailto:example@example.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg><span>example@example.com</span></a>
+<a class="contact-link" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg><span>@example</span></a>
+<a class="contact-link" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg><span>/example</span></a>
+</div>
+</div>
+<div class="contact-photo"><img src="CatPicture2.png" alt="Кот"></div>
+</div>
+</section>
+
+</main>
+<footer><span>Built with React + Vite</span></footer>
+</div>
+</body></html>

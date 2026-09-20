@@ -1,0 +1,19 @@
+{
+	"contacts": [
+		{
+			"type": "email",
+			"value": "novikovga03@gmail.com",
+			"href": "mailto:novikovga03@gmail.com"
+		},
+		{
+			"type": "telegram",
+			"value": "@Djotaro",
+			"href": "https://t.me/Djotaro"
+		},
+		{
+			"type": "github",
+			"value": "/Izolenta1",
+			"href": "https://github.com/Izolenta1"
+		}
+	]
+}

@@ -1,0 +1,31 @@
+{
+	"skills": [
+		{
+			"type": "Languages",
+			"items": ["TypeScript", "JavaScript", "SQL"]
+		},
+		{
+			"type": "Frontend",
+			"items": [
+				"React",
+				"Next.js",
+				"Vite",
+				"Tailwind CSS",
+				"Redux Toolkit",
+				"Zustand",
+				"TanStack Query",
+				"RHF",
+				"Zod",
+				"Framer Motion"
+			]
+		},
+		{
+			"type": "Backend",
+			"items": ["Node.js", "Express", "MySQL"]
+		},
+		{
+			"type": "Tooling",
+			"items": ["Git", "Docker", "Prettier", "Figma", "Vitest", "FSD"]
+		}
+	]
+}

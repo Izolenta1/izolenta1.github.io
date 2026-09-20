@@ -1,0 +1,61 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+:root {
+	--bg: #f6f3ee;
+	--paper: #fffcf7;
+	--ink: #202326;
+	--ink-soft: #2b2e30;
+	--muted: #74736f;
+	--muted-dark: #b7b6b2;
+	--accent: #c96b4b;
+	--sage: #788a78;
+	--line: #d8d2c9;
+}
+
+@theme {
+	--color-bg: var(--bg);
+	--color-paper: var(--paper);
+	--color-ink: var(--ink);
+	--color-ink-soft: var(--ink-soft);
+	--color-muted: var(--muted);
+	--color-muted-dark: var(--muted-dark);
+	--color-accent: var(--accent);
+	--color-sage: var(--sage);
+	--color-line: var(--line);
+
+	--font-manrope: 'Manrope', sans-serif;
+	--font-ibmpm: 'IBMPM', monospace;
+
+	--breakpoint-xs: 35rem; /* 560px */
+}
+
+@font-face {
+	font-family: 'Manrope';
+	font-style: normal;
+	font-weight: 100 900;
+	font-display: swap;
+	src: url('/fonts/Manrope.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'IBMPM';
+	font-style: normal;
+	font-weight: 100 700;
+	font-display: swap;
+	src: url('/fonts/IBM_Plex_Mono.woff2') format('woff2');
+}
+
+@utility focus-ring {
+	&:focus-visible {
+		outline: 2px solid var(--ink);
+		outline-offset: 2px;
+	}
+}
+
+@utility focus-ring-inset {
+	&:focus-visible {
+		outline: 2px solid var(--ink);
+		outline-offset: -2px;
+	}
+}

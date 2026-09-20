@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ru" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="preload" href="/fonts/Manrope.woff2" as="font" type="font/woff2" crossorigin />
+		<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+		<meta name="apple-mobile-web-app-title" content="Portfolio" />
+		<link rel="manifest" href="/site.webmanifest" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<title>{{name}} {{surname}} — {{position}}</title>
+		<meta name="description" content="{{about}}" />
+		<meta name="robots" content="index, follow" />
+		<link rel="canonical" href="{{canonical}}/" />
+
+		<!-- Open Graph -->
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="{{name}} {{surname}} — {{position}}" />
+		<meta property="og:description" content="{{about}}" />
+		<meta property="og:url" content="{{canonical}}/" />
+		<meta property="og:image" content="{{canonical}}/og.png" />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:locale" content="ru_RU" />
+		<meta property="og:site_name" content="Портфолио — {{name}} {{surname}}" />
+
+		<!-- Twitter -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content="{{name}} {{surname}} — {{position}}" />
+		<meta name="twitter:description" content="{{about}}" />
+		<meta name="twitter:image" content="{{canonical}}/og.png" />
+
+		<!-- JSON-LD -->
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@graph": [
+					{
+						"@type": "WebSite",
+						"@id": "{{canonical}}/#website",
+						"url": "{{canonical}}/",
+						"name": "{{name}} {{surname}} — {{position}}",
+						"description": "{{about}}",
+						"inLanguage": "ru-RU",
+						"publisher": {
+							"@id": "{{canonical}}/#person"
+						}
+					},
+					{
+						"@type": "Person",
+						"@id": "{{canonical}}/#person",
+						"name": "{{name}} {{surname}}",
+						"givenName": "{{name}}",
+						"familyName": "{{surname}}",
+						"jobTitle": "{{position}}",
+						"url": "{{canonical}}/",
+						"description": "{{about}}",
+						"address": {
+							"@type": "PostalAddress",
+							"addressLocality": "Москва",
+							"addressCountry": "RU"
+						},
+						"email": "{{email}}",
+						"sameAs": [{{other_contacts}}],
+						"knowsAbout": [{{skills}}]
+					}
+				]
+			}
+		</script>
+	</head>
+	<body class="bg-bg">
+		<div id="root"></div>
+		<script type="module" src="/src/main.tsx"></script>
+	</body>
+</html>

@@ -1,0 +1,9 @@
+export { MailIcon } from './MailIcon';
+export { TelegramIcon } from './TelegramIcon';
+export { GithubIcon } from './GithubIcon';
+export { MenuIcon } from './MenuIcon';
+export { CrossIcon } from './CrossIcon';
+export { JSIcon } from './JSIcon';
+export { ReactIcon } from './ReactIcon';
+export { NodejsIcon } from './NodejsIcon';
+export { DockerIcon } from './DockerIcon';

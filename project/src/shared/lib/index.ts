@@ -1,0 +1,1 @@
+export { setOrigin } from './setOrigin';
