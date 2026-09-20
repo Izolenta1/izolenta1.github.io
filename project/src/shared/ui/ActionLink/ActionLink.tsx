@@ -1,6 +1,6 @@
 import { cn } from 'cn';
 import { cva } from 'class-variance-authority';
-import type { AnchorHTMLAttributes } from "react";
+import type { AnchorHTMLAttributes } from 'react';
 import { setOrigin } from '@/shared/lib';
 import type { ReactNode } from 'react';
 

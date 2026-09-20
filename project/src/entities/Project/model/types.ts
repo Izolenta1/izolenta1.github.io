@@ -5,4 +5,4 @@ export type Project = {
 	github_url: string | null;
 	description: string;
 	tech_stack: string[];
-}
+};

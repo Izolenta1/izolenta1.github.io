@@ -40,8 +40,20 @@ export function ProjectCard({ project, selected }: ProjectCardProps) {
 				/>
 			)}
 
-			<span className={cn('text-ink text-sm transition-colors duration-300 group-hover:text-paper', selected && 'text-paper')}>{project.name}</span>
-			<span className={cn('text-muted text-xs transition-colors duration-300 group-hover:text-muted-dark', selected && 'text-muted-dark')}>
+			<span
+				className={cn(
+					'text-ink group-hover:text-paper text-sm transition-colors duration-300',
+					selected && 'text-paper',
+				)}
+			>
+				{project.name}
+			</span>
+			<span
+				className={cn(
+					'text-muted group-hover:text-muted-dark text-xs transition-colors duration-300',
+					selected && 'text-muted-dark',
+				)}
+			>
 				{project.year ? project.year : '[Не указано]'}
 			</span>
 		</div>

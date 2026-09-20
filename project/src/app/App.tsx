@@ -6,7 +6,7 @@ function App() {
 		<AppLayout>
 			<MainPage />
 		</AppLayout>
-	)
+	);
 }
 
 export default App;

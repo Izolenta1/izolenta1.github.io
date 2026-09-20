@@ -73,11 +73,19 @@ export function ProjectInfo({ project, titleId }: ProjectInfoProps) {
 				</div>
 
 				<div className="font-manrope flex w-full flex-col gap-3 md:flex-1 lg:w-102.5 lg:flex-none lg:gap-4">
-					<h3 id={titleId} className="text-paper text-2xl leading-normal font-medium tracking-[-0.02em] md:text-3xl lg:text-4xl">
+					<h3
+						id={titleId}
+						className="text-paper text-2xl leading-normal font-medium tracking-[-0.02em] md:text-3xl lg:text-4xl"
+					>
 						{project.name}
 					</h3>
 					{project.github_url && (
-						<ActionLink href={project.github_url} target="_blank" rel="noopener noreferrer" aria-label={`GitHub: ${project.name} (откроется в новой вкладке)`}>
+						<ActionLink
+							href={project.github_url}
+							target="_blank"
+							rel="noopener noreferrer"
+							aria-label={`GitHub: ${project.name} (откроется в новой вкладке)`}
+						>
 							github →
 						</ActionLink>
 					)}

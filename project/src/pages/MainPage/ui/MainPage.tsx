@@ -25,5 +25,5 @@ export function MainPage() {
 				<Contacts />
 			</Reveal>
 		</div>
-	)
+	);
 }

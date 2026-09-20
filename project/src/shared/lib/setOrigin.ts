@@ -3,4 +3,4 @@ export function setOrigin(e: React.MouseEvent<HTMLElement>) {
 	const { left, top } = el.getBoundingClientRect();
 	el.style.setProperty('--x', `${e.clientX - left}px`);
 	el.style.setProperty('--y', `${e.clientY - top}px`);
-};
+}

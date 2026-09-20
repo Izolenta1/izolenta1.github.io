@@ -12,7 +12,7 @@
 		"typecheck": "tsc -b --pretty",
 		"format:check": "prettier --check .",
 		"check": "npm run typecheck && npm run lint && npm run lint:fsd && npm run format:check",
-		"format:fix": "prettier --write ."
+		"format": "prettier --write ."
 	},
 	"dependencies": {
 		"@tailwindcss/vite": "^4.3.3",
