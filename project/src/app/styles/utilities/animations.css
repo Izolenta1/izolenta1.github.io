@@ -16,8 +16,10 @@
 		transition-timing-function: ease-out;
 	}
 
-	&:hover::before {
-		width: var(--fill-size);
-		height: var(--fill-size);
+	@media (hover: hover) and (pointer: fine) {
+		&:hover::before {
+			width: var(--fill-size);
+			height: var(--fill-size);
+		}
 	}
 }
