@@ -35,12 +35,7 @@ export function ContactButton({ contact }: ContactButtonProps) {
 				'bg-paper font-manrope text-ink hover:text-paper',
 				'flex items-center gap-3 rounded-lg p-3 px-4.5 py-3.5',
 				'text-base leading-normal font-normal',
-				'transition-[color] duration-300',
-				// темный «залив»
-				'before:pointer-events-none before:absolute before:top-(--y) before:left-(--x) before:-z-10',
-				'before:bg-ink before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:rounded-full',
-				'before:transition-[width,height] before:duration-300 before:ease-out before:content-[""]',
-				'hover:before:size-[250%]',
+				'fill-from-origin transition-[color] duration-300 [--fill-color:var(--ink)] [--fill-size:250%]',
 			)}
 		>
 			<Icon className="size-5" aria-hidden="true" />

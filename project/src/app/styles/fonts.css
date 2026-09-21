@@ -1,0 +1,15 @@
+@font-face {
+	font-family: 'Manrope';
+	font-style: normal;
+	font-weight: 100 900;
+	font-display: swap;
+	src: url('/fonts/Manrope.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'IBMPM';
+	font-style: normal;
+	font-weight: 100 700;
+	font-display: swap;
+	src: url('/fonts/IBM_Plex_Mono.woff2') format('woff2');
+}

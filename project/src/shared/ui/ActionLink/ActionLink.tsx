@@ -10,14 +10,7 @@ const actionLinkVariants = cva(
 		'font-manrope text-sm font-medium leading-3.5 text-paper text-center',
 		'bg-sage rounded-full',
 		'transition-[color] duration-300',
-		'cursor-pointer',
-		// оранжевый «залив»
-		'before:content-[""] before:absolute before:top-(--y) before:left-(--x)',
-		'before:size-0 before:rounded-full before:bg-accent',
-		'before:-translate-x-1/2 before:-translate-y-1/2',
-		'before:transition-[width,height] before:duration-300 before:ease-out',
-		'before:pointer-events-none before:-z-10',
-		'hover:before:size-[250%]', // запас, чтобы покрыть с любого угла
+		'cursor-pointer fill-from-origin [--fill-size:250%] [--fill-color:var(--accent)]',
 	].join(' '),
 	{
 		variants: {

@@ -16,12 +16,7 @@ export function ProjectCard({ project, selected }: ProjectCardProps) {
 				'group relative isolate overflow-hidden',
 				'font-manrope bg-paper flex flex-col rounded-xl p-3 leading-normal font-normal',
 				'transition-[color,background-color,border-radius] duration-300',
-				'cursor-pointer',
-				// темный «залив»
-				'before:pointer-events-none before:absolute before:top-(--y) before:left-(--x) before:-z-10',
-				'before:bg-ink before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:rounded-full before:content-[""]',
-				'before:transition-[width,height] before:duration-300 before:ease-out',
-				'hover:before:size-[300%]',
+				'fill-from-origin cursor-pointer [--fill-color:var(--ink)] [--fill-size:300%]',
 				selected ? 'bg-ink rounded-b-none delay-0' : 'delay-250',
 			)}
 		>

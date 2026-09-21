@@ -1,0 +1,16 @@
+@theme {
+	--color-bg: var(--bg);
+	--color-paper: var(--paper);
+	--color-ink: var(--ink);
+	--color-ink-soft: var(--ink-soft);
+	--color-muted: var(--muted);
+	--color-muted-dark: var(--muted-dark);
+	--color-accent: var(--accent);
+	--color-sage: var(--sage);
+	--color-line: var(--line);
+
+	--font-manrope: 'Manrope', sans-serif;
+	--font-ibmpm: 'IBMPM', monospace;
+
+	--breakpoint-xs: 35rem; /* 560px */
+}

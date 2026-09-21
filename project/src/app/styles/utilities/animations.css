@@ -1,0 +1,23 @@
+@utility fill-from-origin {
+	&:before {
+		content: '';
+		pointer-events: none;
+		position: absolute;
+		top: var(--y);
+		left: var(--x);
+		z-index: -10;
+		width: 0;
+		height: 0;
+		border-radius: 9999px;
+		transform: translate(-50%, -50%);
+		background-color: var(--fill-color);
+		transition-property: width, height;
+		transition-duration: 300ms;
+		transition-timing-function: ease-out;
+	}
+
+	&:hover::before {
+		width: var(--fill-size);
+		height: var(--fill-size);
+	}
+}
